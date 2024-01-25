@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the repository for an Ecommerce Application built in Rails for both Client and Admin facing sides!
 
-Things you may want to cover:
+## Best Practices
 
-- Ruby version
+- Use font awesome for any icons. Font awesome pro is setup with this repo
 
-- System dependencies
+### Installing Dependencies
 
-- Configuration
+#### Dependencies Include:
 
-- Database creation
+- Hotwire Stimulus and Turbo
+- Stripe
+- PostgreSQL
+- FontAwesome
+- Tailwind (Installed differently from the Gemfile)
 
-- Database initialization
+1. This repository's dependencies are all available in the `Gemfile` so in order to install them all you need to run is
+   `bundle install `
 
-- How to run the test suite
+### Setup Databases
 
-- Services (job queues, cache servers, search engines, etc.)
+- From the repo root directory, run the following:
 
-- Deployment instructions
-
-- ...
+```shell
+bin/rails db:migrate
+```

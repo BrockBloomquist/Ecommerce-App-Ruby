@@ -60,7 +60,7 @@ export default class extends Controller {
       cart: cart,
     };
 
-    const csrfToken = document.querySelector("[name='csrf_token']").content;
+    const csrfToken = document.querySelector("[name='csrf-token']").content;
     fetch("/checkout", {
       method: "POST",
       headers: {
@@ -70,12 +70,16 @@ export default class extends Controller {
       body: JSON.stringify(payload),
     }).then((res) => {
       if (res.ok) {
-        window.location.href = body.url;
+        res.json().then((body) => {
+          window.location.href = body.url;
+        });
       } else {
-        const errorEl = document.createElement("div");
-        errorEl.innerHTML = `There was an error processing your order, ${body.error}`;
-        let errorContainer = document.createElement("errorContainer");
-        errorContainer.appendChild(errorEl);
+        res.json().then((body) => {
+          const errorEl = document.createElement("div");
+          errorEl.innerHTML = `There was an error processing your order, ${body.error}`;
+          let errorContainer = document.createElement("errorContainer");
+          errorContainer.appendChild(errorEl);
+        });
       }
     });
   }
